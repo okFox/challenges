@@ -9,12 +9,13 @@ class Node {
   class BinaryTree {
     constructor(tree) {
       this.tree = tree;
+      this.treeValues = [];
     }
 
     preOrder() {
         if(node != null) 
         { 
-            console.log(node.data); 
+            this.treeValues.push(node.data); 
             this.preorder(node.left); 
             this.preorder(node.right); 
         }
@@ -24,7 +25,7 @@ class Node {
         if(node !== null) 
         { 
         this.inorder(node.left); 
-        console.log(node.data); 
+        this.treeValues.push(node.data); 
         this.inorder(node.right); 
       } 
   }
@@ -34,7 +35,7 @@ class Node {
         { 
             this.postorder(node.left); 
             this.postorder(node.right); 
-            console.log(node.data); 
+            this.treeValues.push(node.data); 
         } 
     }
   }
@@ -50,5 +51,4 @@ class Node {
       this.root = node;
       return
     }
-  }
   }
