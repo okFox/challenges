@@ -13,29 +13,33 @@ describe('BinaryTree class', () => {
     expect(tree.rootNode).toEqual({ 'left': null, 'right': null, 'value': 10 }); 
   });
   it('records elements to inorder array in correct order', () => {
-    tree.add(10);
-    tree.add(5);
-    tree.add(15);
-    expect(tree.inOrder(tree.rootNode)).toEqual([5, 10, 15]); 
+    tree.add(3);
+    tree.add(7);
+    tree.add(23);
+    expect(tree.inOrder(tree.rootNode)).toEqual([7, 3, 23]); 
   });
   it('records elements to preorder array in correct order', () => {
-    tree.add(10);
-    tree.add(5);
-    tree.add(15);
-    expect(tree.preOrder(tree.root)).toEqual([10, 5, 15]); 
+    tree.add(3);
+    tree.add(7);
+    tree.add(23);
+    expect(tree.preOrder(tree.rootNode)).toEqual([3, 7, 23]); 
   });
   it('records elements to postorder array in correct order', () => {
-    tree.add(10);
-    tree.add(5);
-    tree.add(15);
-    expect(tree.postOrder(tree.root)).toEqual([15, 10, 5]); 
+    tree.add(3);
+    tree.add(7);
+    tree.add(23);
+    expect(tree.postOrder(tree.rootNode)).toEqual([7, 23, 3]); 
   });
   it('returns true if a value is contained in the tree', () => {
-    tree.add(10);
-    expect(tree.contains(10)).toEqual(true); 
+    tree.add(3);
+    tree.add(7);
+    tree.add(23);
+    expect(tree.contains(23)).toEqual(true); 
   });
   it('returns false if a value is not contained in the tree', () => {
-    tree.add(10);
-    expect(tree.contains(5)).toEqual(false); 
+    tree.add(3);
+    tree.add(7);
+    tree.add(23);
+    expect(tree.contains(6)).toEqual(false); 
   });
 });

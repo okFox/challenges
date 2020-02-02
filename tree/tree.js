@@ -10,14 +10,14 @@ class Node {
       this.rootNode = null;
     }
 
-
-    preOrder(rootNode, treeValues) {
+    preOrder(rootNode, treeValues = []) {
         if(rootNode != null) 
         { 
             treeValues.push(rootNode.value); 
-            this.preorder(rootNode.left); 
-            this.preorder(node.right); 
+            this.preOrder(rootNode.left, treeValues); 
+            this.preOrder(rootNode.right, treeValues); 
         }
+        return treeValues;
     }
 
     inOrder(rootNode, treeValues = []) { 
@@ -30,51 +30,40 @@ class Node {
       return treeValues;
   }
 
-    postOrder() {
-        if(node != null) 
+    postOrder(rootNode, treeValues = []) {
+        if(rootNode != null) 
         { 
-            this.postorder(node.left); 
-            this.postorder(node.right); 
-            this.treeValues.push(node.value); 
+            this.postOrder(rootNode.left, treeValues); 
+            this.postOrder(rootNode.right, treeValues); 
+            treeValues.push(rootNode.value); 
         } 
+        return treeValues;
     }
-    add(value) {
-      const node = new Node(value)
-      if (!this.rootNode) {
-        this.rootNode = node
-        return
+ 
+    add(value){
+      if(!this.rootNode){
+        this.rootNode = new Node(value);
+        return;
+      }
+      let currentNode = this.rootNode;
+
+      if(!currentNode.left) {
+        currentNode.left = new Node(value);
+        currentNode = currentNode.left;
+        return;
+      } else {
+        currentNode.right = new Node(value);
+        currentNode = currentNode.left;
+        return;
       }
     }
+    contains(value){
+      const treeValues = this.inOrder(this.rootNode);
+      if(treeValues.includes(value)){
+        return true;
+      } 
+      return false;
+    }
   }
-  
-  // class BinarySearchTree {
-  //   constructor() {
-  //     this.root = null;
-  //   }
-      // insert a Node
 
-  // Define contains method on prototype (value)
-  // Create variable to hold found node
-  // Create recursive function
-  //   If current node value is equal to value
-  //     Set variable equal to true
-  //   else if BST left child is !undefined && value < BST value 
-  //     recurse with current node's left child
-  //   else if BST right child is !undefined && value > BST value
-  //     recurse with current node's right child
-  // Call recursive function on root node
-  // Return variable of found node
-// contains(value) {
-// let currentNode = undefined;
-
-// if(currentNode.value === value) {
-//   currentNode = true;
-// } else if {
-  
-// }
-
-// }
-
-
-// }
 module.exports = BinaryTree;
